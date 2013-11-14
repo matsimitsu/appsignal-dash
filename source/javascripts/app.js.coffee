@@ -11,13 +11,14 @@ getDate = (el) ->
 renderCounter = (res) ->
   field = urlParam('field')
   postfix = urlParam('postfix')
+  subtitle = urlParam('subtitle')
 
   last = d3.max(res.data, (d) -> d.timestamp)
   point = res.data.filter((x) =>
     x.timestamp == last
   )[0]
   $(".container h1").html("#{point[field]}<span>#{postfix}</span>")
-
+  $(".container h2").html(subtitle)
 renderGraph = (res) ->
   full_data = []
   from = new Date(res.from)
