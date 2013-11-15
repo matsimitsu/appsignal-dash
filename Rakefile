@@ -1,6 +1,6 @@
-SSH_USER = ''
-SSH_HOST = ''
-SSH_DIR  = ''
+SSH_USER = 'appsignaldash'
+SSH_HOST = 'web01.matsimitsu.com'
+SSH_DIR  = '/home/appsignaldash/public'
 
 desc "Build the website from source"
 task :build do

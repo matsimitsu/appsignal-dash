@@ -16,30 +16,34 @@ body, html
   background: -moz-linear-gradient(top, $background-color, #8f77a4)
 
 .container
-  display: table-cell
-  vertical-align: middle
-  text-align: center
 
-  h1
-    z-index: 10
-    font-size: 160px
-    font-weight: normal
-    margin-bottom: 10px
-    span
+  .counter
+    padding-top: 20%
+    display: block
+    vertical-align: middle
+    text-align: center
+    width: 100%
+
+    h1
+      z-index: 10
+      font-size: 160px
+      font-weight: normal
+      margin-bottom: 10px
+      span
+        +opacity(.5)
+        font-size: 80px
+    h2
+      display: inline
+      padding: 10px 40px
+      z-index: 10
+      font-size: 40px
+      font-weight: normal
+      border-top: 1px solid white
       +opacity(.5)
-      font-size: 80px
-  h2
-    display: inline
-    padding: 10px 40px
-    z-index: 10
-    font-size: 40px
-    font-weight: normal
-    border-top: 1px solid white
-    +opacity(.5)
 
 .graph
   position: absolute
-  top: 0
+  bottom: 0
   left: 0
   fill: none
   stroke: white
