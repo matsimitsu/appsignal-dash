@@ -10,12 +10,12 @@ getDate = (el) ->
 
 renderCounter = (res) ->
   field = urlParam('field')
-  postfix = urlParam('postfix')
-  subtitle = urlParam('subtitle')
+  postfix = urlParam('postfix') || ''
+  subtitle = urlParam('subtitle') || ''
 
   point = res.data.sort((a, b) -> return b - a )[1]
-  $(".container h1").html("#{Math.round(point[field])}<span>#{postfix}</span>")
-  $(".container h2").html(subtitle)
+  $(".container h1").html("#{Math.round(point[field])}<span>#{unescape(postfix)}</span>")
+  $(".container h2").html(unescape(subtitle))
 
 renderGraph = (res) ->
   full_data = []
@@ -53,6 +53,7 @@ renderGraph = (res) ->
       y(d[field])
     )
 
+  $('.container svg').remove()
   graph = d3.select('.container').append("svg:svg")
       .attr("width", w)
       .attr("height", h)
@@ -64,17 +65,30 @@ renderGraph = (res) ->
     .attr("d", line(full_data))
     .attr("class", "line")
 
+getJSON = (endpoint) ->
+
+  $.getJSON endpoint, (res) =>
+    renderCounter(res)
+    renderGraph(res)
+
+  setTimeout ( ->
+    getJSON(endpoint)
+  ), 60000
+
 $(document).ready ->
   site_id = urlParam('site_id')
   field = urlParam('field')
   token = urlParam('token')
+  color = urlParam('color') || 'ffffff'
+  bg_color = urlParam('bg_color') || '967cac'
+
   four_hours_ago = moment().subtract('hours', 4).format()
+  endpoint = "https://appsignal.com/api/#{site_id}/graphs.json?fields[]=#{field}&token=#{token}&from=#{four_hours_ago}&callback=?"
 
   $('.container')
     .height($(window).height())
     .width($(window).width())
+    .css('color', "##{color}")
+    .css('background-color', "##{bg_color}")
 
-  endpoint = "https://appsignal.com/api/#{site_id}/graphs.json?fields[]=#{field}&token=#{token}&from=#{four_hours_ago}&callback=?"
-  $.getJSON endpoint, (res) =>
-    renderCounter(res)
-    renderGraph(res)
+  getJSON(endpoint)
