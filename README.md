@@ -1,5 +1,7 @@
 # Appsignal Dashboard
 
+http://matsimitsu.com/blog/2013/11/26/appsignnal-graphs.html
+
 ## Installation
 
 `bundle` and run `middleman`
@@ -20,5 +22,10 @@ All settings are given with the url.
 * * ex exception count (absolute number)
 * postfix (optional) text behind the number
 * subtitle (optional) text below the number
-* color (optional) hex color value (without the #)
-* bg_color (optional) hex color value (without the #)
+* background, background color
+* foreground, foreground color
+
+An example url is:
+
+`http://appsignaldash.matsimitsu.com/index.html?site_id=[site_id]&field=count&token=[token]&postfix=RPM&subtitle=Troughput
+`

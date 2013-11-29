@@ -1,6 +1,7 @@
 //= require jquery
 //= require d3
 //= require moment
+
 urlParam = (name) ->
   res = new RegExp("[\\?&]#{name}=([^&#]*)").exec(window.location.href)
   res[1] if res != null
