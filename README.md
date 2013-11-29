@@ -27,5 +27,6 @@ All settings are given with the url.
 
 An example url is:
 
-`http://appsignaldash.matsimitsu.com/index.html?site_id=[site_id]&field=count&token=[token]&postfix=RPM&subtitle=Troughput
-`
+```
+http://appsignaldash.matsimitsu.com/index.html?site_id=[site_id]&field=count&token=[token]&postfix=RPM&subtitle=Troughput
+```
